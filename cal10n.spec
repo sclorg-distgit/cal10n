@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        0.7.7
-Release:        4.11%{?dist}
+Release:        4.12%{?dist}
 Summary:        Compiler assisted localization library (CAL10N)
 License:        MIT
 URL:            http://cal10n.qos.ch
@@ -12,11 +12,11 @@ Source0:        http://cal10n.qos.ch/dist/%{pkg_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-mvn(org.apache.maven.plugins:maven-site-plugin)
-BuildRequires:  maven30-mvn(org.apache.maven.plugins:maven-source-plugin)
-BuildRequires:  maven30-mvn(org.apache.maven:maven-artifact)
-BuildRequires:  maven30-mvn(org.apache.maven:maven-artifact-manager)
-BuildRequires:  maven30-mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven.plugins:maven-site-plugin)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven:maven-artifact)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven:maven-artifact-manager)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven:maven-plugin-api)
 
 %description
 Compiler Assisted Localization, abbreviated as CAL10N (pronounced as "calion") 
@@ -45,7 +45,7 @@ an enum type match those in the corresponding resource bundles.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 find . -name \*.jar -delete
 %pom_xpath_remove pom:extensions
@@ -56,13 +56,13 @@ find . -name \*.jar -delete
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build -- -Dproject.build.sourceEncoding=ISO-8859-1
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -78,6 +78,9 @@ set -e -x
 %doc LICENSE.txt
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0.7.7-4.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0.7.7-4.11
 - maven33 rebuild
 
