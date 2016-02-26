@@ -4,14 +4,14 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        0.7.7
-Release:        4.12%{?dist}
+Release:        4.13%{?dist}
 Summary:        Compiler assisted localization library (CAL10N)
 License:        MIT
 URL:            http://cal10n.qos.ch
 Source0:        http://cal10n.qos.ch/dist/%{pkg_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}mvn(org.apache.maven.plugins:maven-site-plugin)
 BuildRequires:  %{?scl_prefix}mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  %{?scl_prefix}mvn(org.apache.maven:maven-artifact)
@@ -78,6 +78,9 @@ set -e -x
 %doc LICENSE.txt
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 0.7.7-4.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0.7.7-4.12
 - maven33 rebuild #2
 
