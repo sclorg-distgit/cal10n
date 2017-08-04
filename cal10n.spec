@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}cal10n
 Version:        0.8.1
-Release:        3.1%{?dist}
+Release:        3.2%{?dist}
 Summary:        Compiler assisted localization library (CAL10N)
 License:        MIT
 URL:            http://cal10n.qos.ch
@@ -77,6 +77,9 @@ find . -name \*.jar -delete
 %license LICENSE.txt
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 0.8.1-3.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 0.8.1-3.1
 - Automated package import and SCL-ization
 
